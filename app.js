@@ -5,6 +5,8 @@ import bodyParser from 'body-parser';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
+import mongoose from 'mongoose';
+
 // Controllers
 import cheesesController from './controllers/cheese.js';
 
@@ -27,6 +29,11 @@ const docOptions = {
 
 const openapiSpecification = swaggerJSDoc(docOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
+// db connect
+mongoose.connect(process.env.DB,{})
+.then((res) => console.log('Connected to MongoDB'))
+.catch((err) => console.log(`Connection Failure: ${err}`));
 
 // URL dispatching
 app.use('/cheeses', cheesesController);
