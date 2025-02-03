@@ -8,7 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 import mongoose from 'mongoose';
 
 // Controllers
-import cheesesController from './controllers/cheese.js';
+import cheesesController from './controllers/cheeses.js';
 
 // Create express server object
 const app = express();
