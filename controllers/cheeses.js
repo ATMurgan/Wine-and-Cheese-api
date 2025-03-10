@@ -7,11 +7,11 @@ import Cheese from '../models/cheese.js'
 const router = express.Router();
 
 // Mock some data
-let cheeses = [
-    {id: 1, name: 'Marble'}, 
-    {id: 2, name: 'Camembert'},
-    {id: 3, name: 'Leicester'}
-];
+// let cheeses = [
+//     {id: 1, name: 'Marble'}, 
+//     {id: 2, name: 'Camembert'},
+//     {id: 3, name: 'Leicester'}
+// ];
 
 /**
  * @swagger
@@ -34,7 +34,7 @@ router.get('/', async (req,res) => {
         }
         return res.status(200).json(cheeses);
     
-
+        
 });
 
 /**

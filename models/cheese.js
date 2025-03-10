@@ -17,7 +17,7 @@ const cheeseSchema = mongoose.Schema({
         required: true
     }
 
-});
+}); 
 
 const Cheese =  mongoose.model('Cheese', cheeseSchema);
 export default Cheese;
