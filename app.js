@@ -8,6 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 import mongoose from 'mongoose';
 
 import cors from 'cors'
+import path from 'path';
 
 // Controllers
 import cheesesController from './controllers/cheeses.js';
@@ -16,6 +17,10 @@ import cheesesController from './controllers/cheeses.js';
 const app = express();
 
 app.use(bodyParser.json());
+
+// get public path for angular cilent app
+const __dirname = path.resolve();
+app.use(express.static(`${__dirname}/public`));
 
 // Swagger config
 const docOptions = {
@@ -45,6 +50,9 @@ app.use(cors({
 
 // URL dispatching
 app.use('/cheeses', cheesesController);
+app.use('*', (req, res) => {
+    res.sendFile(`${__dirname}/public/index.html`);
+});
 
 // Start web server
 app.listen(3000, () => {
